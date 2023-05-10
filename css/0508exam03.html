@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html {
+        background-image: url('space.jpg');
+    }
+    #div1 {
+        background-color: darkslateblue;
+        color: aliceblue;
+        height: 30px;
+        text-align: right;
+        width: 100%;
+        padding: 10px;
+        margin: -10px -10px -10px -10px;
+    }
+    #div1 span {
+        display: inline-block;
+        padding: 5px 20px 5px 20px;
+    }
+    #div1 .star {
+        float: left;
+    }
+    #div2 {
+        color:white;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+        margin-bottom: 5px;
+        font-size: 50px;
+    }
+    #div2 span {
+        color: rgb(255, 0, 119);
+        
+    }
+    #div3 {
+        color: white;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px white solid;
+        font-size: 50px;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+</style>
+<body>
+    <div id="div1">
+        <span class="star">&#9734;</span>
+        <span>Home</span> 
+        <span>About</span> 
+        <span>Projects</span> 
+        <span>Contact</span>
+    </div>
+    <div id="div2">
+        안녕하세요, 제 이름은 
+        <span>&nbsp 임장희입니다.</span>
+        &nbsp 저는 프론트엔드 개발자입니다.        
+    </div>
+    <div id="div3">
+        <a href="https://github.com/LimJangHee" style="color: white">view my work ➲</a>    
+    </div>
+   
+    
+</body>
+</html>

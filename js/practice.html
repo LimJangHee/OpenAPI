@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>텍스트 입력</title>
+	<style>
+		#centered-text {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			font-size: 4rem;
+		}
+	</style>
+</head>
+<body>
+	<label for="input-text">텍스트 입력: </label>
+	<input type="text" id="input-text">
+	<button onclick="displayText()">입력</button>
+	<script>
+		function displayText() {
+            // 해당 아이디의 값을 가져와서 inputText에 대입
+			const inputText = document.getElementById("input-text").value;
+			if (inputText === "") {
+				alert("텍스트값을 입력해 주세요");
+			} else {
+                // 새로운 div요소를 생성
+				const centeredText = document.createElement("div");
+                // id속성을 추가하고 값을 할당
+				centeredText.setAttribute("id", "centered-text");
+                // 새로 생성된 div요소의 innerText속성에 inputText에 저장된 값을 할당
+				centeredText.innerText = inputText;
+                // 생성된 div요소를 html문서의 body 요소에 추가
+                // 새로운 div요소가 생성, inputText에 저장된 텍스트가 포함
+				document.body.appendChild(centeredText);
+			}
+		}
+	</script>
+</body>
+</html>

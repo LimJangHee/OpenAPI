@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: large;
+            /* 배경 이미지 설정 */
+            background-image: url("../html/p.jpg");
+            background-size: cover;
+        }
+
+        /* 가장 최상위 태그에 지정된 폰트에 비례하여 적용 */
+        /* 최상위 값만 변경해주면 알아서 다 적용되기 때문에 편리 */
+        .rem {
+            font-size: 1.5rem;
+        }
+
+        #div1 {
+            font-size: 10pt;
+        }
+        /* 부모 태그 즉 div1 폰트에 비례하여 적용 */
+        .em {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <p class="rem">Hello World</p>
+    <div id="div1">
+        <p class="em">Hello World</p>
+    </div>
+    
+</body>
+</html>

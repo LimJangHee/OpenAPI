@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>텍스트 입력</title>
+    <style>
+      #centered-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-size: 4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="input-text">텍스트 입력: </label>
+    <input type="text" id="input-text" />
+    <button onclick="displayText()">입력</button>
+    <div id="button-container"></div>
+    <script>
+      function displayText() {
+        // 해당 아이디의 값을 가져와서 inputText에 대입
+        const inputText = document.getElementById("input-text").value;
+        if (inputText === "") {
+          alert("텍스트값을 입력해 주세요");
+        } else {
+          // 새로운 div요소를 생성
+          const centeredText = document.createElement("div");
+          // id속성을 추가하고 값을 할당
+          centeredText.setAttribute("id", "centered-text");
+          // 새로 생성된 div요소의 innerText속성에 inputText에 저장된 값을 할당
+          centeredText.innerText = inputText;
+          // 생성된 div요소를 html문서의 body 요소에 추가
+          // 새로운 div요소가 생성, inputText에 저장된 텍스트가 포함
+          document.body.appendChild(centeredText);
+          // 해당 id를 가져와서 변수로 선언
+          const buttonContainer = document.getElementById("button-container");
+          // 배열 생성
+          const colors = ["red", "blue", "green"];
+          // colors의 각 요소를 순회하여 color 변수에 할당
+          for (let color of colors) {
+            // 새로운 버튼을 생성
+            const colorButton = document.createElement("button");
+            // 버튼의 내부 텍스트 내용을 설정
+            colorButton.innerText = color;
+            // 버튼의 글자 색상을 빨간색으로 설정
+            colorButton.style.color = color;
+            // 클릭 이벤트를 등록하는 코드
+            // 해당 이벤트 발생시 function() {~} -> ~에 있는 작업 수행
+            colorButton.addEventListener("click", function () {
+              alert(color + " 색으로 변경됩니다");
+              centeredText.style.color = color;
+            });
+            // colorButton 요소를 buttonContainer의 자식 요소로 추가
+            buttonContainer.appendChild(colorButton);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let num = 0;
+      
+      while (true) {
+          num = prompt("숫자를 입력해주세요");
+        if (isNaN(num)) {
+          alert("숫자를 입력해 주세요");
+        } else if (num < 1 || num > 100) {
+          alert("1이상 100이하를 넣어주세요");
+        } else {
+          break;
+        }
+      }
+
+      // num은 현재 string타입임, 하지만 알아서 연산을 해주기 때문에 for문 적용이 됨
+      for (let i = 1; i <= num; i++) {
+        console.log(i);
+        // ===을 쓰면 타입까지 정확하게 비교를 하기 때문에 string type인 num이랑 비교가 안됨
+        if (i == num) {
+          alert("완료되었습니다.");
+        }
+      }
+    </script>
+  </body>
+</html>

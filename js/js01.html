@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 외부에 있는 function 가져오기 -->
+    <script src="utils.js"></script>
+</head>
+<body>
+    <!-- 브라우저 열시 가장 먼저 출력 되고 이걸 클릭해줘야 그 다음 코드들이 출력 -->
+    <script>
+        alert("alert");
+    </script>
+
+    <script>
+        function hello() {
+            alert("안녕!!!");
+        }
+        
+    </script>
+
+    <!-- 해당 문자열을 클릭시 안녕 출력 -->
+    <div onclick="javascript:alert('안녕')">여기는 버튼이다</div>
+
+    <div onclick="javascript:hello()">Hello</div>
+
+    <div onclick="javascript:hi()">외부</div>
+</body>
+</html>

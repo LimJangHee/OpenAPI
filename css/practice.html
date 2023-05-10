@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1 {
+        display : none;
+    }
+    #div2 {
+        display : visibility;
+        border: 1px blue solid;
+        width:50px;
+        height:50px;
+        margin:50px;
+        padding:50px;
+    }
+    /* width,height,margin,padding 지정 가능 */
+    #div3 {
+        display : block;
+        border: 1px blue solid;
+        width:50px;
+        height:50px;
+        margin:50px;
+        padding:50px;
+    }
+    /* width/height 값 지정 불가, margin 위아래 지정 불가 */
+    #div4 {
+        display : inline;
+        border: 1px blue solid;
+        width:50px;
+        height:50px;
+        margin:50px;
+        padding:50px;
+    }
+    /* 줄바꿈 일어나지 않음, 크기 지정 안하면 컨텐츠 만큼 */
+    #div5 {
+        display : inline-block;
+        border: 1px blue solid;
+        width:50px;
+        height:50px;
+        margin:50px;
+        padding:50px;
+    }
+</style>
+<body>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+    <div id="div4">div4</div>
+    <div id="div5">div5</div>
+</body>
+</html>

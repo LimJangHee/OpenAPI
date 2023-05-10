@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: green;
+        }
+        
+        /* 250 ~ 300까지는 빨간색 */
+        @media (max-width: 300px) {
+            body {
+                background-color: red;
+            }
+        }    
+        /* 0 ~ 250까지는 노란색 */
+        @media (max-width: 250px) {
+            body {
+                background-color: yellow;
+            }
+        }
+
+        /* 해당 범위 내에서만 리스트 적용 */
+        @media screen and (min-width: 250px) {
+            li {
+                display: block;
+            }
+        }
+        
+        @media screen and (min-width: 300px) {
+            li {
+                display: inline;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+   <nav>
+    <li>아메리카노</li>
+    <li>국화차</li>
+    <li>쌍화차</li>
+   </nav> 
+</body>
+</html>
