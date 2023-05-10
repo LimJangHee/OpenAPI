@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        display: block;
+        width: 300px;
+        height: 30px;
+        border: 1px blue solid;
+        background-color: blue;
+        color: azure;
+        padding: 10px 20px 5px 20px;
+      }
+
+      #div2 {
+        display: block;
+        width: 300px;
+        border: 1px gainsboro solid;
+        background-color: darkgrey;
+        padding: 10px 20px 5px 20px;
+      }
+
+      #div3 {
+        display: block;
+        width: 270px;
+        border: 1px white solid;
+        background-color: white;
+        margin: 20px 15px;
+        overflow-y: scroll;
+        height: 200px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // HTML 문서의 로딩이 완료되면 실행되는 함수를 등록하는 역활
+        // 페이지가 완전히 로드된 이후에 스크립트가 실행되어야 하는 경우에 사용
+      $(document).ready(function () {
+        var articleContent = "";
+
+        $("#registerBtn").click(function () {
+          var content = prompt("기사 내용을 입력하세요:");
+
+          // 만약 content 변수가 존재한다면
+          if (content) {
+            //기존 내용에 content추가 후 줄바꿈
+            articleContent += "새로운 기사 : " + content + "<br>";
+            //div3내용 갱신, html() -> 선택된 요소의 내용을 지정한 값으로 설정하는 메소드
+            $("#div3").html(articleContent);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="div1">기사등록하기</div>
+    <div id="div2">
+      <div id="div3"></div>
+    </div>
+    <button id="registerBtn">등록하기</button>
+  </body>
+</html>

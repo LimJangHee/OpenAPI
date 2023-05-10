@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 {
+        display: block;
+        width: 300px;
+        height: 30px;
+        border: 1px blue solid;
+        background-color: blue;
+        color: azure;
+        padding: 10px 20px 5px 20px;
+      }
+
+      #div2 {
+        display: block;
+        width: 300px;
+        min-height : 300px;
+        border: 1px gainsboro solid;
+        background-color: darkgrey;
+        padding: 10px 20px 5px 20px;
+      }
+
+      #div3 {
+        display: block;
+        width: 270px;
+        border: 1px white solid;
+        background-color: white;
+        margin: 20px 15px;
+        min-height: 30px;
+      }
+
+      .articleBlock {
+        display: block;
+        width: 240px;
+        border: 1px white solid;
+        background-color: white;
+        margin: 20px 15px;
+        height: 30px;
+      }
+
+      .articleContent {
+        padding: 10px 20px 5px 20px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#registerBtn").click(function () {
+          var content = prompt("기사 내용을 입력하세요:");
+
+          if (content) {
+            // 새로운 articleBlock 생성
+            var $articleBlock = $("#articleTemplate .articleBlock").clone();
+            // articleContent 내용 추가
+            $articleBlock.find(".articleContent").html("새로운 기사 : " + content);
+
+            // 생성된 articleBlock을 div3에 추가
+            $("#div3").append($articleBlock);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="div1">기사등록하기</div>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+    
+    <button id="registerBtn">등록하기</button>
+
+    <!-- 새로운 articleBlock을 생성할 때 사용할 템플릿 -->
+    <div id="articleTemplate" style="display: none;">
+      <div class="articleBlock">
+        <div class="articleContent"></div>
+      </div>
+    </div>
+  </body>
+</html>

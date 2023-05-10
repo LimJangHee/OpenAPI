@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>기사 등록 예시</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var articles = []; // 기사를 저장할 배열
+      
+      // "등록" 버튼 클릭 시 prompt 창 표시
+      $('#add-article').on('click', function() {
+        var title = prompt('제목을 입력하세요');
+        var content = prompt('내용을 입력하세요');
+        
+        // 사용자가 입력을 취소한 경우
+        if (!title || !content) {
+          alert('제목 또는 내용을 입력해주세요');
+          return;
+        }
+        
+        // 기사 객체 생성 후 배열에 추가
+        var article = {
+          title: title,
+          content: content
+        };
+        articles.push(article);
+        
+        // 화면에 기사 목록 출력
+        var $list = $('#article-list');
+        $list.empty(); // 이전 목록 지우기
+        articles.forEach(function(article) {
+          var $li = $('<li>');
+          var $title = $('<div>').text(article.title);
+          var $content = $('<div>').text(article.content);
+          $li.append($title, $content);
+          $list.append($li);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <button id="add-article">기사 등록</button>
+  <ul id="article-list"></ul>
+</body>
+</html>

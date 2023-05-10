@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkbox Table Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// 모든 체크박스를 해제합니다.
+			$(":checkbox").prop("checked", false);
+
+			// 모든 체크박스가 체크되어 있는지 확인합니다.
+			function isAllChecked() {
+				var allChecked = true;
+				$(":checkbox").each(function() {
+					if (!$(this).prop("checked")) {
+						allChecked = false;
+						return false; // each 함수를 빠져나옵니다.
+					}
+				});
+				return allChecked;
+			}
+            // 확인 체크박스가 체크 되어있으면 전체해제, 체크 되어있지 않으면 전체 체크
+            $("#checkAll").click(function() {
+                if ($(this).prop("checked")) {
+                    $(":checkbox").prop("checked", true);
+                 } else {
+                    $(":checkbox").prop("checked", false);
+                }
+            });
+
+			// 개별 체크박스를 클릭할 때마다 모든 체크박스가 체크되어 있는지 확인합니다.
+			$(":checkbox").click(function() {
+				if (isAllChecked()) {
+					$("#checkAll").prop("checked", true);
+				} else {
+					$("#checkAll").prop("checked", false);
+				}
+			});
+      
+
+			// 로그 버튼을 클릭하면 선택된 제목을 표시합니다.
+			$("#logButton").click(function() {
+				var selectedTitles = "";
+				$(":checkbox:checked").each(function() {
+					selectedTitles += $(this).closest('tr').find('.title').text() + ", ";
+				});
+
+				if (selectedTitles === "") {
+					alert("선택된 항목이 없습니다.");
+				} else {
+					alert("선택된 항목: " + selectedTitles);
+				}
+			});
+		});
+	</script>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<h1>Checkbox Table Example</h1>
+	<table>
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="checkAll">확인</th>
+				<th>제목</th>
+				<th>글쓴시간</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td class="title">제목1</td>
+				<td>2023-05-10</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td class="title">제목2</td>
+				<td>2023-05-09</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td class="title">제목3</td>
+				<td>2023-05-08</td>
+			</tr>
+            <tr>
+				<td><input type="checkbox"></td>
+				<td class="title">제목4</td>
+				<td>2023-05-07</td>
+			</tr>
+            <tr>
+				<td><input type="checkbox"></td>
+				<td class="title">제목5</td>
+				<td>2023-05-06</td>
+			</tr>
+    </table> 
+    
+    <button id="logButton">로그</button>
+</body>
+</html>

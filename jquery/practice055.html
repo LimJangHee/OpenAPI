@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>회원가입</title>
+  <script>
+    function validateForm() {
+      // 아이디
+      const id = document.forms["signupForm"]["id"].value;
+      if (!id.includes("@")) {
+        alert("이메일 형식으로 입력해주세요.");
+        return false;
+      }
+
+      // 비밀번호
+      const password = document.forms["signupForm"]["password"].value;
+      if (password.length < 5) {
+        alert("비밀번호는 5자 이상이어야 합니다.");
+        return false;
+      }
+
+      // 성별
+      const gender = document.forms["signupForm"]["gender"];
+      if (!gender[0].checked && !gender[1].checked) {
+        alert("성별을 선택해주세요.");
+        return false;
+      }
+
+      // 직업
+      const job = document.forms["signupForm"]["job"].value;
+      if (job === "") {
+        alert("직업을 선택해주세요.");
+        return false;
+      }
+
+      // 취미
+      const hobbies = document.querySelectorAll('input[name="hobby"]:checked');
+      if (hobbies.length < 3) {
+        alert("취미는 3개 이상 선택해주세요.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>회원가입</h1>
+
+  <form>
+    <form action="">
+        아이디
+        <input type="email" name="" id="" /><br />
+        비밀번호
+        <input type="text" name="" id="" required minlength="5" /><br />
+        성별
+        <label for="radio1">남자</label>
+        <input type="radio" id="radio1" name="options" value="1" />
+        <label for="radio2">여자</label>
+        <input type="radio" id="radio2" name="options" value="2" /> <br>
+  
+        <!--  <input type="radio" name="" id="" >남자 
+          <input type="radio" name="" id="" >여자 <br> -->
+        직업
+        <select name="job" required>
+          <option value="" class="option"></option>
+          <option value="" class="option">생산</option>
+          <option value="" class="option">관리</option>
+          <option value="" class="option">서비스</option>
+        </select>
+        <br />
+        취미
+        <input type="checkbox" name="" id="" /> 개발
+        <input type="checkbox" name="" id="" /> 게임
+        <input type="checkbox" name="" id="" /> 낚시
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <input type="checkbox" name="" id="" /> 운동
+        <input type="checkbox" name="" id="" /> 독서
+        <input type="checkbox" name="" id="" /> 음악감상
+  
+        <br />
+        <input type="reset" value="취소" name="" id="" />
+        <input type="submit" value="회원가입" name="" id="" />
+      </form>
+
+</body>
+</html>

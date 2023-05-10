@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 입력</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+  <style>
+    #centered-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <label for="input-text">텍스트 입력: </label>
+  <input type="text" id="input-text" />
+  <button id="display-button">입력</button>
+  <div id="button-container"></div>
+
+  <script>
+    $(function() {
+      $("#display-button").click(function() {
+        const inputText = $("#input-text").val();
+        if (inputText === "") {
+          alert("텍스트값을 입력해 주세요");
+        } else {
+          const centeredText = $("<div></div>").attr("id", "centered-text").text(inputText);
+          $("body").append(centeredText);
+          const buttonContainer = $("#button-container");
+          const colors = ["red", "blue", "green"];
+          for (let color of colors) {
+            const colorButton = $("<button></button>").text(color).css("color", color);
+            colorButton.click(function() {
+              alert(color + " 색으로 변경됩니다");
+              centeredText.css("color", color);
+            });
+            buttonContainer.append(colorButton);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
