@@ -1,110 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>회원가입</title>
-  <script>
-    const form = document.querySelector('form');
-    const idInput = document.querySelector('input[type="email"]');
-    const pwInput = document.querySelector('input[type="text"]');
-    const genderInputs = document.querySelectorAll('input[type="radio"]');
-    const jobSelect = document.querySelector('select');
-    const hobbyInputs = document.querySelectorAll('input[type="checkbox"]');
-  
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-  
-      let idValue = idInput.value;
-      let pwValue = pwInput.value;
-      let genderChecked = false;
-      let jobSelected = false;
-      let hobbyCheckedCount = 0;
-  
-      // Check if ID is valid email
-      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(idValue)) {
-        alert('이메일 형식으로 입력해주세요.');
-        return;
-      }
-  
-      // Check if password is at least 5 characters long
-      if (pwValue.length < 5) {
-        alert('비밀번호는 5자 이상이어야 합니다.');
-        return;
-      }
-  
-      // Check if gender is selected
-      for (let genderInput of genderInputs) {
-        if (genderInput.checked) {
-          genderChecked = true;
-          break;
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $('input[type="radio"]').click(function () {
+        let isChecked = $(this).prop("checked");
+        if (isChecked) {
+          $(this).prop("checked", false);
+        } else {
+          $(this).prop("checked", true);
         }
-      }
-      if (!genderChecked) {
-        alert('성별을 선택해주세요.');
-        return;
-      }
-  
-      // Check if job is selected
-      if (jobSelect.value === '') {
-        alert('직업을 선택해주세요.');
-        return;
-      }
-  
-      // Check if at least 3 hobbies are selected
-      for (let hobbyInput of hobbyInputs) {
-        if (hobbyInput.checked) {
-          hobbyCheckedCount++;
-        }
-      }
-      if (hobbyCheckedCount < 3) {
-        alert('취미는 3개 이상 선택해주세요.');
-        return;
-      }
-  
-      // If all conditions are met, display success message and submit form
-      alert('회원가입이 완료되었습니다!');
-      form.submit();
-    });
-  </script>
-</head>
-<body>
-  <h1>회원가입</h1>
+      });
+      $(document).ready(function () {
+        $("form").submit(function (event) {
+          // 이메일 형식 검사를 위한 정규표현식
+          let userId = $("#userId").val();
+          // 입력된 값이 이메일 형식인지 검사합니다.
+          let emailRegExp = /\S+@\S+\.\S+/;
+          let password = $("#password").val();
+          // 선택된 취미 수를 계산합니다.
+          let selectedHobbies = $('input[name="hobby"]:checked').length;
+          let isChecked = $('input[name="options"]:checked').val();
 
-  <form>
+          if (!emailRegExp.test(userId)) {
+            alert("이메일 형식으로 입력해주세요.");
+            event.preventDefault();
+          } else if (password.length < 5) {
+            alert("비밀번호는 최소 5글자 이상이어야 합니다");
+            event.preventDefault();
+          } else if (isChecked == null || isChecked == false) {
+            alert("성별을 선택해주세요");
+            event.preventDefault();
+          }
+          // 선택된 취미가 3개 미만인 경우 폼 제출을 취소합니다.
+          else if (selectedHobbies < 3) {
+            alert("최소 3개 이상의 취미를 선택해야 합니다.");
+            event.preventDefault();
+          } else {
+            alert("회원가입이 완료되었습니다");
+          }
+        });
+      });
+    </script>
+
+    <style></style>
+  </head>
+  <body>
     <form action="">
-        아이디
-        <input type="email" name="" id="" /><br />
-        비밀번호
-        <input type="text" name="" id="" required minlength="5" /><br />
-        성별
-        <label for="radio1">남자</label>
-        <input type="radio" id="radio1" name="options" value="1" />
-        <label for="radio2">여자</label>
-        <input type="radio" id="radio2" name="options" value="2" /> <br>
-  
-        <!--  <input type="radio" name="" id="" >남자 
-          <input type="radio" name="" id="" >여자 <br> -->
-        직업
-        <select name="job" required>
-          <option value="" class="option"></option>
-          <option value="" class="option">생산</option>
-          <option value="" class="option">관리</option>
-          <option value="" class="option">서비스</option>
-        </select>
-        <br />
-        취미
-        <input type="checkbox" name="" id="" /> 개발
-        <input type="checkbox" name="" id="" /> 게임
-        <input type="checkbox" name="" id="" /> 낚시
-        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-        <input type="checkbox" name="" id="" /> 운동
-        <input type="checkbox" name="" id="" /> 독서
-        <input type="checkbox" name="" id="" /> 음악감상
-  
-        <br />
-        <input type="reset" value="취소" name="" id="" />
-        <input type="submit" value="회원가입" name="" id="" />
-      </form>
+      아이디&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" id="userId" /><br />
+      
+      비밀번호&nbsp;
+      <input type="password" id="password" /><br />
+      
+      성별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="radio1">남자</label>
+      <input type="radio" id="radio1" name="options" value="1" />
+      <label for="radio2">여자</label>
+      <input type="radio" id="radio2" name="options" value="2" /> <br />
+      직업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select name="job" required>
+        <option value="" class="option"></option>
+        <option value="" class="option">생산</option>
+        <option value="" class="option">관리</option>
+        <option value="" class="option">서비스</option>
+      </select>
+      <br />
+      취미&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" name="hobby" id="" /> 개발
+      <input type="checkbox" name="hobby" id="" /> 게임
+      <input type="checkbox" name="hobby" id="" /> 낚시
+      <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" name="hobby" id="" /> 운동
+      <input type="checkbox" name="hobby" id="" /> 독서
+      <input type="checkbox" name="hobby" id="" /> 음악감상
 
-</body>
+      <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" value="취소" name="" id="" />
+      <input type="submit" value="회원가입" name="" id="" />
+    </form>
+  </body>
 </html>
